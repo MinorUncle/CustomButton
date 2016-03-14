@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "CustomButton.h"
 @interface ViewController ()
 
 @end
@@ -16,6 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CustomButton* btn = [[CustomButton alloc]init];
+    btn.backgroundColor = [UIColor redColor];
+    [btn setTitle:@"你好" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"headIcon"] forState:UIControlStateNormal];
+    
+    btn.frame = (CGRect){80,200,200,100};
+    [self.view addSubview:btn];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

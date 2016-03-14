@@ -13,6 +13,7 @@
 		C506B55E1C96ADD500C926FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C506B55C1C96ADD500C926FB /* Main.storyboard */; };
 		C506B5601C96ADD500C926FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C506B55F1C96ADD500C926FB /* Assets.xcassets */; };
 		C506B5631C96ADD500C926FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C506B5611C96ADD500C926FB /* LaunchScreen.storyboard */; };
+		C506B56C1C96ADF900C926FB /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C506B56B1C96ADF900C926FB /* CustomButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		C506B55F1C96ADD500C926FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C506B5621C96ADD500C926FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C506B5641C96ADD500C926FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C506B56A1C96ADF900C926FB /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		C506B56B1C96ADF900C926FB /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				C506B5561C96ADD500C926FB /* AppDelegate.h */,
 				C506B5571C96ADD500C926FB /* AppDelegate.m */,
+				C506B56A1C96ADF900C926FB /* CustomButton.h */,
+				C506B56B1C96ADF900C926FB /* CustomButton.m */,
 				C506B5591C96ADD500C926FB /* ViewController.h */,
 				C506B55A1C96ADD500C926FB /* ViewController.m */,
 				C506B55C1C96ADD500C926FB /* Main.storyboard */,
@@ -149,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C506B56C1C96ADF900C926FB /* CustomButton.m in Sources */,
 				C506B55B1C96ADD500C926FB /* ViewController.m in Sources */,
 				C506B5581C96ADD500C926FB /* AppDelegate.m in Sources */,
 				C506B5551C96ADD500C926FB /* main.m in Sources */,
