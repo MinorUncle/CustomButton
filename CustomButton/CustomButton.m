@@ -33,31 +33,27 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     
-    if (_contentAlignment == CustomButtonAlignmentTypeVertical) {
+      if (_contentAlignment == CustomButtonAlignmentTypeVertical) {
     // Center image
         CGSize labSize = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
         CGFloat height = self.imageView.image.size.height + _margin+labSize.height;
+    
         CGRect rect = self.imageView.frame;
         rect.origin.x = (self.frame.size.width - rect.size.width)*0.5;
         rect.origin.y = (self.frame.size.height - height)*0.5;
-        
         self.imageView.frame = rect;
         
         //Center text
 
         rect.origin.x = 0;
-        rect.origin.y = self.imageView.frame.size.height + _margin;
-        if (self.titleLabel.font) {
-            CGSize size = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
-            rect.size.width = size.width;
-            rect.origin.x = (self.frame.size.width - rect.size.width)*0.5;
-        }else{
-            rect.size.width = self.frame.size.width;
-        }
+        rect.origin.y = CGRectGetMaxY(rect) + _margin;
+        rect.size.width = self.frame.size.width;
+        rect.size.height = labSize.height;
 //        newFrame.size.height = self.frame.size.height - newFrame.origin.y;
         self.titleLabel.frame = rect;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
     }
+
 }
 -(void)setContentAlignment:(CustomButtonAlignmentType)contentAlignment{
     _contentAlignment = contentAlignment;
