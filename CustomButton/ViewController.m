@@ -17,12 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CustomButton* btn = [[CustomButton alloc]init];
+    btn.contentAlignment = CustomButtonAlignmentTypeHorizontalNormal;
     btn.backgroundColor = [UIColor redColor];
-    [btn setTitle:@"你好" forState:UIControlStateNormal];
+    [btn setTitle:@"你好WE4RFWEAWTFW3E VEAWRT5G" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"headIcon"] forState:UIControlStateNormal];
     
-    btn.frame = (CGRect){80,200,200,100};
+    btn.frame = (CGRect){280,200,20,100};
     [self.view addSubview:btn];
     // Do any additional setup after loading the view, typically from a nib.
 }

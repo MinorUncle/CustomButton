@@ -22,6 +22,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         _margin = DEFAULT_MARGIN;
+        _brokenFrame = YES;
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
     }
     return self;
 }
@@ -32,27 +34,97 @@
 }
 -(void)layoutSubviews {
     [super layoutSubviews];
-    
-      if (_contentAlignment == CustomButtonAlignmentTypeVertical) {
-    // Center image
-        CGSize labSize = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
-        CGFloat height = self.imageView.image.size.height + _margin+labSize.height;
-    
-        CGRect rect = self.imageView.frame;
-        rect.origin.x = (self.frame.size.width - rect.size.width)*0.5;
-        rect.origin.y = (self.frame.size.height - height)*0.5;
-        self.imageView.frame = rect;
-        
-        //Center text
+    CGSize labSize = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
+    CGSize imgSize = self.imageView.image.size;
+    CGFloat height = imgSize.height + _margin+labSize.height;
+    CGFloat width = imgSize.width + _margin+labSize.width;
+    if(!self.brokenFrame){
+        height = MIN(height, self.frame.size.height);
+        width = MIN(width, self.frame.size.width);
+        imgSize = self.imageView.frame.size;
+        labSize.height = MIN(labSize.height, self.frame.size.height - imgSize.height);
+        labSize.width = MIN(labSize.width, self.frame.size.width- imgSize.width);
 
-        rect.origin.x = 0;
-        rect.origin.y = CGRectGetMaxY(rect) + _margin;
-        rect.size.width = self.frame.size.width;
-        rect.size.height = labSize.height;
-//        newFrame.size.height = self.frame.size.height - newFrame.origin.y;
-        self.titleLabel.frame = rect;
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+
     }
+    switch (self.contentAlignment) {
+        case CustomButtonAlignmentTypeVerticalNormal:
+        {
+            
+            CGRect rect;
+            rect.size = imgSize;
+            rect.origin.x = (self.frame.size.width - rect.size.width)*0.5;
+            rect.origin.y = (self.frame.size.height - height)*0.5;
+            self.imageView.frame = rect;
+            
+            rect.origin.y = CGRectGetMaxY(rect) + _margin;
+            rect.size.width = self.frame.size.width;
+            rect.origin.x = (self.frame.size.width - rect.size.width)*0.5;
+            rect.size.height = labSize.height;
+            //        newFrame.size.height = self.frame.size.height - newFrame.origin.y;
+            self.titleLabel.frame = rect;
+
+        }
+            
+            break;
+        case CustomButtonAlignmentTypeHorizontalNormal:
+        {
+            
+            CGRect rect;
+            rect.size = imgSize;
+            rect.origin.x = (self.frame.size.width - width)*0.5;
+            rect.origin.y = (self.frame.size.height - rect.size.height)*0.5;
+            self.imageView.frame = rect;
+
+            rect.origin.x = CGRectGetMaxX(rect) + _margin;
+            rect.size = labSize;
+            rect.origin.y = (self.frame.size.height - rect.size.height)*0.5;
+            //        newFrame.size.height = self.frame.size.height - newFrame.origin.y;
+            self.titleLabel.frame = rect;
+        }
+            
+            break;
+        case CustomButtonAlignmentTypeVerticalReversed:
+        {
+            
+            CGRect rect;
+            rect.origin.y = (self.frame.size.height - height)*0.5;
+            rect.size.width = self.frame.size.width;
+            rect.origin.x = (self.frame.size.width - rect.size.width)*0.5;
+            rect.size.height = labSize.height;
+            //        newFrame.size.height = self.frame.size.height - newFrame.origin.y;
+            self.titleLabel.frame = rect;
+            
+            rect.origin.y = CGRectGetMaxY(rect) + _margin;
+            rect.size = imgSize;
+            rect.origin.x = (self.frame.size.width - rect.size.width)*0.5;
+            self.imageView.frame = rect;
+            
+        }
+            
+            break;
+        case CustomButtonAlignmentTypeHorizontalReversed:
+        {
+            
+            CGRect rect;
+            rect.origin.x = (self.frame.size.width - width)*0.5;
+            rect.size = labSize;
+            rect.origin.y = (self.frame.size.height - rect.size.height)*0.5;
+            //        newFrame.size.height = self.frame.size.height - newFrame.origin.y;
+            self.titleLabel.frame = rect;
+            
+            rect.origin.x = CGRectGetMaxX(rect) + _margin;
+            rect.size = imgSize;
+            rect.origin.y = (self.frame.size.height - rect.size.height)*0.5;
+            self.imageView.frame = rect;
+
+        }
+            break;
+            
+        default:
+            break;
+    }
+  
 
 }
 -(void)setContentAlignment:(CustomButtonAlignmentType)contentAlignment{

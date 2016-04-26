@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 typedef enum CustomButtonAlignmentType{
-    CustomButtonAlignmentTypeVertical =0,
-    CustomButtonAlignmentTypeHorizontal
+    
+    CustomButtonAlignmentTypeVerticalNormal =0,
+    CustomButtonAlignmentTypeHorizontalNormal,
+    CustomButtonAlignmentTypeVerticalReversed,
+    CustomButtonAlignmentTypeHorizontalReversed
 }CustomButtonAlignmentType;
 @interface CustomButton : UIButton
 @property(nonatomic,assign)CGFloat margin;
+@property(nonatomic,assign)BOOL brokenFrame;  //default是YES
 @property (nonatomic,assign)CustomButtonAlignmentType contentAlignment;
 @end
